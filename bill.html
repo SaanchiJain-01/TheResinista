@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>The Resinista - Bill</title>
+
+
+<!-- Bootstrap -->
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+
+<!-- Google Fonts -->
+<link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+
+<style>
+
+    body {
+        margin: 0;
+        background: linear-gradient(
+            135deg,
+            #f8efff,
+            #eee0ff
+        );
+
+        font-family: 'Poppins', sans-serif;
+
+        color: #4d315c;
+    }
+
+
+    /* MAIN BILL */
+
+    .bill-container {
+
+        width: 92%;
+
+        max-width: 950px;
+
+        margin: 45px auto;
+
+        background: white;
+
+        padding: 45px;
+
+        border-radius: 25px;
+
+        box-shadow:
+            0 10px 35px
+            rgba(80,40,100,0.15);
+
+        border: 1px solid #ead7f5;
+    }
+
+
+    /* BRAND */
+
+    .brand {
+
+        color: #7b4b9a;
+
+        font-family:
+            'Dancing Script',
+            cursive;
+
+        font-size: 42px;
+
+        font-weight: 700;
+    }
+
+
+    .tagline {
+
+        color: #8c6998;
+
+        font-size: 14px;
+    }
+
+
+    /* HEADING */
+
+    .heading {
+
+        color: #63377e;
+
+        font-family:
+            'Playfair Display',
+            serif;
+
+        font-weight: 700;
+    }
+
+
+    .invoice-title {
+
+        font-size: 30px;
+
+        letter-spacing: 2px;
+
+        margin-top: 10px;
+    }
+
+
+    /* CUSTOMER */
+
+    .customer-box {
+
+        background: #f8efff;
+
+        border-radius: 15px;
+
+        padding: 20px;
+
+        margin-top: 25px;
+    }
+
+
+    /* ORDER ITEM */
+
+    .order-item {
+
+        border: 1px solid #ead7f5;
+
+        border-radius: 18px;
+
+        padding: 20px;
+
+        margin: 18px 0;
+
+        background: #fff;
+
+        box-shadow:
+            0 4px 15px
+            rgba(80,40,100,0.07);
+    }
+
+
+    .product-title {
+
+        color: #63377e;
+
+        font-family:
+            'Playfair Display',
+            serif;
+
+        font-size: 23px;
+
+        font-weight: 700;
+
+        margin-bottom: 15px;
+    }
+
+
+    .detail {
+
+        margin: 6px 0;
+
+        font-size: 14px;
+
+        color: #66556d;
+    }
+
+
+    .detail b {
+
+        color: #63377e;
+    }
+
+
+    .item-price {
+
+        color: #7b4b9a;
+
+        font-size: 23px;
+
+        font-weight: 700;
+    }
+
+
+    /* TOTAL */
+
+    .total-section {
+
+        background:
+            linear-gradient(
+                135deg,
+                #f8efff,
+                #ead7f5
+            );
+
+        border-radius: 18px;
+
+        padding: 25px;
+
+        margin-top: 25px;
+    }
+
+
+    .total-label {
+
+        color: #66556d;
+
+        font-size: 17px;
+    }
+
+
+    .total {
+
+        color: #7b4b9a;
+
+        font-size: 35px;
+
+        font-weight: 700;
+    }
+
+
+    /* BUTTONS */
+
+    .btn-custom {
+
+        background:
+            linear-gradient(
+                135deg,
+                #7b4b9a,
+                #a36bc0
+            );
+
+        color: white;
+
+        border: none;
+
+        border-radius: 28px;
+
+        padding: 13px 27px;
+
+        font-weight: 600;
+
+        text-decoration: none;
+
+        display: inline-block;
+
+        margin: 6px;
+
+        transition: 0.3s;
+    }
+
+
+    .btn-custom:hover {
+
+        color: white;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 7px 18px
+            rgba(123,75,154,0.3);
+    }
+
+
+    .btn-secondary-custom {
+
+        background: #f0e4f7;
+
+        color: #63377e;
+    }
+
+
+    .btn-secondary-custom:hover {
+
+        background: #e4d2ef;
+
+        color: #63377e;
+    }
+
+
+    /* EMPTY */
+
+    .empty-message {
+
+        text-align: center;
+
+        padding: 50px;
+
+        color: #7b4b9a;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+
+        text-align: center;
+
+        margin-top: 35px;
+
+        padding-top: 20px;
+
+        border-top: 1px dashed #d9bde8;
+
+        color: #8c6998;
+
+        font-size: 13px;
+    }
+
+
+    .footer-brand {
+
+        font-family:
+            'Dancing Script',
+            cursive;
+
+        font-size: 25px;
+
+        color: #7b4b9a;
+
+        font-weight: bold;
+    }
+
+
+    /* PRINT */
+
+    @media print {
+
+        body {
+
+            background: white;
+        }
+
+
+        .bill-container {
+
+            box-shadow: none;
+
+            border: none;
+
+            margin: 0;
+
+            width: 100%;
+
+            padding: 20px;
+        }
+
+
+        .no-print {
+
+            display: none !important;
+        }
+
+
+        .order-item {
+
+            box-shadow: none;
+        }
+    }
+
+
+    /* MOBILE */
+
+    @media(max-width: 768px) {
+
+        .bill-container {
+
+            padding: 25px;
+
+            margin: 20px auto;
+        }
+
+
+        .brand {
+
+            font-size: 34px;
+        }
+
+
+        .invoice-title {
+
+            font-size: 25px;
+        }
+
+
+        .item-price {
+
+            margin-top: 15px;
+        }
+
+
+        .total {
+
+            font-size: 30px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="bill-container">
+<!-- HEADER -->
+
+<div class="text-center">
+
+    <div class="brand">
+
+        ✨ The Resinista
+
+    </div>
+
+
+    <p class="tagline">
+
+        Handcrafted With Love ❤️
+
+    </p>
+
+
+    <hr>
+
+
+    <h2 class="heading invoice-title">
+
+        INVOICE / BILL
+
+    </h2>
+
+</div>
+
+
+
+<!-- CUSTOMER DETAILS -->
+
+<div class="customer-box">
+
+    <h4 class="heading">
+
+        👤 Customer Details
+
+    </h4>
+
+
+    <div class="row mt-3">
+
+        <div class="col-md-6">
+
+            <b>Customer Name:</b>
+
+            <span id="customerName">{{ customer_name }}</span>
+
+        </div>
+
+
+        <div class="col-md-6">
+
+            <b>Order Date:</b>
+
+            <span id="orderDate">
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<hr class="my-4">
+
+
+
+<!-- ORDER DETAILS -->
+
+<h4 class="heading">
+
+    🛍️ Order Details
+
+</h4>
+
+
+<div id="orderItems">
+
+</div>
+
+
+
+<!-- TOTAL -->
+
+<div class="total-section">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-6">
+
+            <div class="total-label">
+
+                Number of Products
+
+            </div>
+
+
+            <h4>
+
+                <span id="itemCount">
+
+                    0
+
+                </span>
+
+            </h4>
+
+        </div>
+
+
+        <div class="col-md-6 text-md-end">
+
+            <div class="total-label">
+
+                Total Amount
+
+            </div>
+
+
+            <div class="total">
+
+                ₹<span id="totalPrice">
+
+                    0
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- BUTTONS -->
+
+<div class="text-center mt-4 no-print">
+
+    <button
+        onclick="window.print()"
+        class="btn-custom">
+
+        🖨️ Print Bill
+
+    </button>
+
+
+    <a
+        href="products.html"
+        class="btn-custom btn-secondary-custom">
+
+        🛍️ Continue Shopping
+
+    </a>
+
+
+    <a
+        href="home.html"
+        class="btn-custom btn-secondary-custom">
+
+        🏠 Home
+
+    </a>
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    <div class="footer-brand">
+
+        The Resinista
+
+    </div>
+
+
+    <div>
+
+        Where Resin Meets Art,
+        Every Piece Tells a Story ✨
+
+    </div>
+
+
+    <div>
+
+        Thank you for shopping with us! 💜
+
+    </div>
+
+
+    <small>
+
+        © 2026 The Resinista.
+        All Rights Reserved.
+
+    </small>
+
+</div>
+</div>
+
+<script>
+
+
+/* =====================================================
+   GET CART FROM URL
+===================================================== */
+
+var params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+var cartData =
+    params.get("cart");
+
+
+var cart = [];
+
+
+
+/* =====================================================
+   READ CART
+===================================================== */
+
+if (cartData) {
+
+    try {
+
+        cart = JSON.parse(
+            decodeURIComponent(cartData)
+        );
+
+
+        if (!Array.isArray(cart)) {
+
+            cart = [];
+
+        }
+
+    }
+
+    catch (error) {
+
+        cart = [];
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SUPPORT OLD SINGLE PRODUCT URL
+===================================================== */
+
+if (
+    cart.length === 0 &&
+    params.get("product")
+) {
+
+    cart.push({
+
+        product:
+            params.get("product"),
+
+        color:
+            params.get("color") || "",
+
+        size:
+            params.get("size") || "",
+
+        glitter:
+            params.get("glitter") || "",
+
+        flowers:
+            params.get("flowers") || "",
+
+        name:
+            params.get("name") || "",
+
+        price:
+            Number(
+                params.get("price")
+            ) || 0
+
+    });
+
+}
+
+
+
+/* =====================================================
+   DISPLAY BILL
+===================================================== */
+
+function displayBill() {
+
+
+    var orderItems =
+        document.getElementById(
+            "orderItems"
+        );
+
+
+    orderItems.innerHTML = "";
+
+
+    /* EMPTY CART */
+
+    if (cart.length === 0) {
+
+        orderItems.innerHTML = `
+
+            <div class="empty-message">
+
+                <h3>
+                    🛒 No Products Found
+                </h3>
+
+                <p>
+                    Your order does not contain
+                    any products.
+                </p>
+
+                <a
+                    href="products.html"
+                    class="btn-custom">
+
+                    🛍️ Shop Products
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    var total = 0;
+
+
+
+    /* DISPLAY ALL PRODUCTS */
+
+    for (
+        var i = 0;
+        i < cart.length;
+        i++
+    ) {
+
+
+        var item = cart[i];
+
+
+        var price =
+            Number(item.price) || 0;
+
+
+        total += price;
+
+
+
+        var orderItem =
+            document.createElement(
+                "div"
+            );
+
+
+        orderItem.className =
+            "order-item";
+
+
+
+        orderItem.innerHTML = `
+
+            <div class="row align-items-center">
+
+                <div class="col-md-8">
+
+                    <div class="product-title">
+
+                        ${i + 1}.
+                        ${escapeHTML(
+                            item.product
+                        )}
+
+                    </div>
+
+
+                    <p class="detail">
+
+                        <b>🎨 Color:</b>
+
+                        ${escapeHTML(
+                            item.color ||
+                            "Not selected"
+                        )}
+
+                    </p>
+
+
+                    <p class="detail">
+
+                        <b>📏 Size:</b>
+
+                        ${escapeHTML(
+                            item.size ||
+                            "Not selected"
+                        )}
+
+                    </p>
+
+
+                    <p class="detail">
+
+                        <b>✨ Glitter:</b>
+
+                        ${escapeHTML(
+                            item.glitter ||
+                            "No Glitter"
+                        )}
+
+                    </p>
+
+
+                    <p class="detail">
+
+                        <b>🌸 Flowers:</b>
+
+                        ${escapeHTML(
+                            item.flowers ||
+                            "No Flowers"
+                        )}
+
+                    </p>
+
+
+                    <p class="detail">
+
+                        <b>✍️ Personalized Text:</b>
+
+                        ${escapeHTML(
+                            item.name ||
+                            "None"
+                        )}
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="col-md-4 text-md-end">
+
+                    <div class="item-price">
+
+                        ₹${price}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        orderItems.appendChild(
+            orderItem
+        );
+
+    }
+
+
+
+    /* TOTAL */
+
+    document.getElementById(
+        "itemCount"
+    ).innerText = cart.length;
+
+
+    document.getElementById(
+        "totalPrice"
+    ).innerText = total;
+
+}
+
+
+
+/* =====================================================
+   SECURITY FUNCTION
+===================================================== */
+
+function escapeHTML(text) {
+
+    if (
+        text === null ||
+        text === undefined
+    ) {
+
+        return "";
+    }
+
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =====================================================
+   ORDER DATE
+===================================================== */
+
+var today =
+    new Date();
+
+
+document.getElementById(
+    "orderDate"
+).innerText =
+    today.toLocaleDateString(
+        "en-IN"
+    );
+
+
+
+/* =====================================================
+   LOAD BILL
+===================================================== */
+
+displayBill();
+
+
+</script>
+
+</body>
+
+</html>

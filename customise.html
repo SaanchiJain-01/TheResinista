@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="resinApp">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>The Resinista | Customize</title>
+
+
+    <!-- BOOTSTRAP -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ANGULARJS -->
+
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js">
+    </script>
+
+
+    <style>
+
+        /* ================= GENERAL ================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    #ead7ff 0%,
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 90% 80%,
+                    #f6d9ff 0%,
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #fffaff,
+                    #eadcf8
+                );
+
+            color: #4d3157;
+
+            min-height: 100vh;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+
+            background: rgba(255,255,255,0.90);
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 5px 20px rgba(80,40,100,0.12);
+
+            padding: 15px 0;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .brand {
+
+            font-family: 'Dancing Script', cursive;
+
+            color: #713d91;
+
+            font-size: 34px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        .brand span {
+
+            color: #b477cf;
+        }
+
+        .nav-btn {
+
+            border: 1px solid #9b63b7;
+
+            color: #713d91;
+
+            border-radius: 25px;
+
+            padding: 8px 18px;
+
+            font-weight: 500;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+
+            background: #713d91;
+
+            color: white;
+        }
+
+
+        /* ================= MARQUEE ================= */
+
+        .sale-marquee {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #713d91,
+                    #a066bc,
+                    #713d91
+                );
+
+            color: white;
+
+            padding: 9px 0;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            box-shadow:
+                0 4px 12px rgba(90,50,120,0.2);
+        }
+
+        marquee {
+
+            padding: 2px;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+
+            text-align: center;
+
+            padding: 55px 20px 30px;
+        }
+
+        .hero-small {
+
+            color: #a066bc;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+
+            font-family: 'Playfair Display', serif;
+
+            color: #542e68;
+
+            font-size: 46px;
+
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+
+            color: #965db2;
+        }
+
+        .hero p {
+
+            color: #79677f;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            max-width: 650px;
+
+            margin: auto;
+        }
+
+
+        /* ================= MAIN CARD ================= */
+
+        .custom-container {
+
+            width: 92%;
+
+            max-width: 1000px;
+
+            margin: 20px auto 60px;
+        }
+
+        .custom-card {
+
+            background: rgba(255,255,255,0.94);
+
+            border-radius: 28px;
+
+            padding: 40px;
+
+            border: 1px solid rgba(180,130,210,0.25);
+
+            box-shadow:
+                0 15px 45px rgba(90,50,120,0.15);
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        /* ================= FORM LABEL ================= */
+
+        .form-label {
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #63377e;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* ================= SELECT / INPUT ================= */
+
+        .form-select,
+        .form-control {
+
+            border: 1px solid #dbc9e5;
+
+            border-radius: 13px;
+
+            padding: 12px 15px;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 14px;
+
+            color: #55435d;
+
+            transition: 0.3s;
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+
+            border-color: #8d51aa;
+
+            box-shadow:
+                0 0 0 3px rgba(141,81,170,0.12);
+        }
+
+
+        /* ================= SECTION BOX ================= */
+
+        .option-section {
+
+            background: #fcf8ff;
+
+            border: 1px solid #eadcf3;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 18px;
+
+            transition: 0.3s;
+        }
+
+        .option-section:hover {
+
+            box-shadow:
+                0 5px 18px rgba(100,60,120,0.08);
+        }
+
+
+        /* ================= PREVIEW ================= */
+
+        .preview {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #faf5ff,
+                    #f0e3fa
+                );
+
+            border: 1px solid #dfc9ed;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            margin-top: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                inset 0 0 20px rgba(150,100,180,0.05);
+        }
+
+        .preview-title {
+
+            font-family: 'Playfair Display', serif;
+
+            color: #713d91;
+
+            font-size: 24px;
+
+            margin-bottom: 20px;
+        }
+
+        .preview p {
+
+            margin-bottom: 8px;
+
+            color: #695a70;
+
+            font-size: 14px;
+        }
+
+        .preview b {
+
+            color: #63377e;
+        }
+
+
+        /* ================= PRICE BOX ================= */
+
+        .price-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #713d91,
+                    #a066bc
+                );
+
+            color: white;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 10px 25px rgba(113,61,145,0.25);
+        }
+
+        .price-box h4 {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .price {
+
+            font-size: 34px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .btn-custom {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #713d91,
+                    #a066bc
+                );
+
+            color: white;
+
+            border: none;
+
+            border-radius: 25px;
+
+            padding: 12px 30px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            margin-top: 18px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 6px 18px rgba(113,61,145,0.20);
+        }
+
+        .btn-custom:hover {
+
+            color: white;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(113,61,145,0.30);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4d3157,
+                    #713d91
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            margin-top: 60px;
+        }
+
+        footer h5 {
+
+            font-family: 'Dancing Script', cursive;
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+        footer p {
+
+            font-size: 13px;
+
+            opacity: 0.9;
+        }
+
+        footer small {
+
+            opacity: 0.7;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 768px) {
+
+            .brand {
+
+                font-size: 28px;
+            }
+
+            .hero h1 {
+
+                font-size: 36px;
+            }
+
+            .custom-card {
+
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body ng-controller="CustomizerController">
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <a
+            class="brand"
+            href="home.html">
+
+            ✨ The <span>Resinista</span>
+
+        </a>
+
+
+        <a
+            href="products.html"
+            class="nav-btn">
+
+            🛍️ Products
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= MARQUEE ================= -->
+
+<div class="sale-marquee">
+
+    <marquee scrollamount="6">
+
+        ✨ CUSTOMIZE YOUR MASTERPIECE ✨
+        | 💜 Choose Your Colour
+        | 🌸 Add Beautiful Flowers
+        | ✨ Add Glitter
+        | 💫 Personalize Your Product
+        | 🎁 Create Something Special With The Resinista
+
+    </marquee>
+
+</div>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-small">
+
+        Handmade • Personalized • Unique
+
+    </div>
+
+
+    <h1>
+
+        Customize Your <span>Resin Art</span> ✨
+
+    </h1>
+
+
+    <p>
+
+        Choose your favourite product, colour, size,
+        glitter and flowers. Add your own personalized
+        message and create a piece made especially for you.
+
+    </p>
+
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="custom-container">
+
+    <div class="custom-card">
+
+
+        <!-- PRODUCT -->
+
+        <div class="option-section">
+
+            <label class="form-label">
+
+                🛍️ Select Product
+
+            </label>
+
+
+            <select
+                class="form-select"
+                ng-model="selectedProduct"
+                ng-change="calculatePrice()">
+
+                <option value="wedding">
+                    Resin Wedding Preservation - ₹999
+                </option>
+
+                <option value="photoframe">
+                    Resin Photo Frame - ₹1199
+                </option>
+
+                <option value="clock">
+                    Resin Clock - ₹2199
+                </option>
+
+                <option value="coasters">
+                    Resin Coasters - ₹499
+                </option>
+
+                <option value="mantraframe">
+                    Resin Mantra Frame - ₹2899
+                </option>
+
+                <option value="tray">
+                    Resin Tray - ₹1199
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- COLOR -->
+
+        <div class="option-section">
+
+            <label class="form-label">
+
+                🎨 Select Color
+
+            </label>
+
+
+            <select
+                class="form-select"
+                ng-model="selectedColor"
+                ng-change="calculatePrice()">
+
+                <option value="lavender">
+                    Lavender (+₹100)
+                </option>
+
+                <option value="pink">
+                    Pink (+₹100)
+                </option>
+
+                <option value="blue">
+                    Blue (+₹150)
+                </option>
+
+                <option value="mint">
+                    Mint (+₹100)
+                </option>
+
+                <option value="transparent">
+                    Transparent (+₹50)
+                </option>
+
+                <option value="purple">
+                    Royal Purple (+₹150)
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- SIZE -->
+
+        <div class="option-section">
+
+            <label class="form-label">
+
+                📏 Select Size
+
+            </label>
+
+
+            <select
+                class="form-select"
+                ng-model="selectedSize"
+                ng-change="calculatePrice()">
+
+                <option value="small">
+                    Small (+₹0)
+                </option>
+
+                <option value="medium">
+                    Medium (+₹200)
+                </option>
+
+                <option value="large">
+                    Large (+₹400)
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- GLITTER -->
+
+        <div class="option-section">
+
+            <label class="form-label">
+
+                ✨ Select Glitter
+
+            </label>
+
+
+            <select
+                class="form-select"
+                ng-model="selectedGlitter"
+                ng-change="calculatePrice()">
+
+                <option value="none">
+                    No Glitter (+₹0)
+                </option>
+
+                <option value="gold">
+                    Gold (+₹70)
+                </option>
+
+                <option value="silver">
+                    Silver (+₹70)
+                </option>
+
+                <option value="holographic">
+                    Holographic (+₹200)
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- FLOWERS -->
+
+        <div class="option-section">
+
+            <label class="form-label">
+
+                🌸 Select Flowers
+
+            </label>
+
+
+            <select
+                class="form-select"
+                ng-model="selectedFlowers"
+                ng-change="calculatePrice()">
+
+                <option value="none">
+                    No Flowers (+₹0)
+                </option>
+
+                <option value="baby">
+                    Baby's Breath (+₹150)
+                </option>
+
+                <option value="rose">
+                    Rose (+₹200)
+                </option>
+
+                <option value="lavender">
+                    Lavender Flowers (+₹200)
+                </option>
+
+                <option value="mixed">
+                    Mixed Flowers (+₹250)
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- PERSONALIZED TEXT -->
+
+        <div class="option-section">
+
+            <label class="form-label">
+
+                💌 Personalized Name / Text
+
+            </label>
+
+
+            <input
+                type="text"
+                class="form-control"
+                ng-model="customName"
+                placeholder="Enter name or message">
+
+        </div>
+
+
+
+        <!-- ================= PREVIEW ================= -->
+
+        <div class="preview">
+
+            <div class="preview-title">
+
+                ✨ Your Custom Creation
+
+            </div>
+
+
+            <p>
+
+                <b>Product:</b>
+
+                {{selectedProductName}}
+
+            </p>
+
+
+            <p>
+
+                <b>Color:</b>
+
+                {{selectedColorName}}
+
+            </p>
+
+
+            <p>
+
+                <b>Size:</b>
+
+                {{selectedSizeName}}
+
+            </p>
+
+
+            <p>
+
+                <b>Glitter:</b>
+
+                {{selectedGlitterName}}
+
+            </p>
+
+
+            <p>
+
+                <b>Flowers:</b>
+
+                {{selectedFlowersName}}
+
+            </p>
+
+
+            <p>
+
+                <b>Personalized Text:</b>
+
+                {{customName}}
+
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= PRICE ================= -->
+
+        <div class="price-box">
+
+            <h4>
+
+                Total Price
+
+            </h4>
+
+
+            <div class="price">
+
+                ₹{{totalPrice}}
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= ADD TO CART ================= -->
+
+        <div class="text-center">
+
+            <button
+                class="btn-custom"
+                ng-click="addToCart()">
+
+                🛒 Add To Cart
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= BOTTOM MARQUEE ================= -->
+
+<div class="sale-marquee">
+
+    <marquee scrollamount="5">
+
+        💜 Made With Love | ✨ Designed For You |
+        🌸 Handcrafted Resin Art | 🎁 Perfect For Gifting |
+        🛍️ Thank You For Supporting The Resinista
+
+    </marquee>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h5>
+
+        ✨ The Resinista
+
+    </h5>
+
+
+    <p>
+
+        Where Resin Meets Art,
+        Every Piece Tells a Story.
+
+    </p>
+
+
+    <small>
+
+        © 2026 The Resinista | Handmade With Love 💜
+
+    </small>
+
+</footer>
+
+
+
+<!-- ================= ANGULARJS ================= -->
+
+<script>
+
+var app = angular.module("resinApp", []);
+
+
+app.controller("CustomizerController", function($scope) {
+
+
+    /* ================= URL PARAMETERS ================= */
+
+    var urlParams =
+        new URLSearchParams(window.location.search);
+
+
+    var productFromURL =
+        urlParams.get("product");
+
+
+    var oldCart =
+        urlParams.get("cart");
+
+
+    /* ================= DEFAULT VALUES ================= */
+
+    $scope.selectedProduct = "wedding";
+
+    $scope.selectedColor = "lavender";
+
+    $scope.selectedSize = "small";
+
+    $scope.selectedGlitter = "none";
+
+    $scope.selectedFlowers = "none";
+
+    $scope.customName = "Your Name";
+
+
+    /* ================= PRODUCT PRICES ================= */
+
+    $scope.productPrices = {
+
+        wedding: 999,
+
+        photoframe: 1199,
+
+        clock: 2199,
+
+        coasters: 499,
+
+        mantraframe: 2899,
+
+        tray: 1199
+
+    };
+
+
+    /* ================= COLOR PRICES ================= */
+
+    $scope.colorPrices = {
+
+        lavender: 100,
+
+        pink: 100,
+
+        blue: 150,
+
+        mint: 100,
+
+        transparent: 50,
+
+        purple: 150
+
+    };
+
+
+    /* ================= SIZE PRICES ================= */
+
+    $scope.sizePrices = {
+
+        small: 0,
+
+        medium: 200,
+
+        large: 400
+
+    };
+
+
+    /* ================= GLITTER PRICES ================= */
+
+    $scope.glitterPrices = {
+
+        none: 0,
+
+        gold: 70,
+
+        silver: 70,
+
+        holographic: 200
+
+    };
+
+
+    /* ================= FLOWER PRICES ================= */
+
+    $scope.flowerPrices = {
+
+        none: 0,
+
+        baby: 150,
+
+        rose: 200,
+
+        lavender: 200,
+
+        mixed: 250
+
+    };
+
+
+    /* ================= PRODUCT NAMES ================= */
+
+    $scope.productNames = {
+
+        wedding:
+            "Resin Wedding Preservation",
+
+        photoframe:
+            "Resin Photo Frame",
+
+        clock:
+            "Resin Clock",
+
+        coasters:
+            "Resin Coasters",
+
+        mantraframe:
+            "Resin Mantra Frame",
+
+        tray:
+            "Resin Tray"
+
+    };
+
+
+    /* ================= COLOR NAMES ================= */
+
+    $scope.colorNames = {
+
+        lavender:
+            "Lavender",
+
+        pink:
+            "Pink",
+
+        blue:
+            "Blue",
+
+        mint:
+            "Mint",
+
+        transparent:
+            "Transparent",
+
+        purple:
+            "Royal Purple"
+
+    };
+
+
+    /* ================= SIZE NAMES ================= */
+
+    $scope.sizeNames = {
+
+        small:
+            "Small",
+
+        medium:
+            "Medium",
+
+        large:
+            "Large"
+
+    };
+
+
+    /* ================= GLITTER NAMES ================= */
+
+    $scope.glitterNames = {
+
+        none:
+            "No Glitter",
+
+        gold:
+            "Gold",
+
+        silver:
+            "Silver",
+
+        holographic:
+            "Holographic"
+
+    };
+
+
+    /* ================= FLOWER NAMES ================= */
+
+    $scope.flowerNames = {
+
+        none:
+            "No Flowers",
+
+        baby:
+            "Baby's Breath",
+
+        rose:
+            "Rose",
+
+        lavender:
+            "Lavender Flowers",
+
+        mixed:
+            "Mixed Flowers"
+
+    };
+
+
+    /* ================= SELECT PRODUCT FROM URL ================= */
+
+    if (productFromURL === "mantra") {
+
+        productFromURL = "mantraframe";
+
+    }
+
+
+    if (
+        productFromURL &&
+        $scope.productPrices[productFromURL] !== undefined
+    ) {
+
+        $scope.selectedProduct =
+            productFromURL;
+
+    }
+
+
+    /* ================= CALCULATE PRICE ================= */
+
+    $scope.calculatePrice = function() {
+
+
+        var productPrice =
+            Number(
+                $scope.productPrices[
+                    $scope.selectedProduct
+                ]
+            ) || 0;
+
+
+        var colorPrice =
+            Number(
+                $scope.colorPrices[
+                    $scope.selectedColor
+                ]
+            ) || 0;
+
+
+        var sizePrice =
+            Number(
+                $scope.sizePrices[
+                    $scope.selectedSize
+                ]
+            ) || 0;
+
+
+        var glitterPrice =
+            Number(
+                $scope.glitterPrices[
+                    $scope.selectedGlitter
+                ]
+            ) || 0;
+
+
+        var flowerPrice =
+            Number(
+                $scope.flowerPrices[
+                    $scope.selectedFlowers
+                ]
+            ) || 0;
+
+
+        /* FINAL TOTAL */
+
+        $scope.totalPrice =
+
+            productPrice +
+
+            colorPrice +
+
+            sizePrice +
+
+            glitterPrice +
+
+            flowerPrice;
+
+
+        /* DISPLAY NAMES */
+
+        $scope.selectedProductName =
+            $scope.productNames[
+                $scope.selectedProduct
+            ];
+
+
+        $scope.selectedColorName =
+            $scope.colorNames[
+                $scope.selectedColor
+            ];
+
+
+        $scope.selectedSizeName =
+            $scope.sizeNames[
+                $scope.selectedSize
+            ];
+
+
+        $scope.selectedGlitterName =
+            $scope.glitterNames[
+                $scope.selectedGlitter
+            ];
+
+
+        $scope.selectedFlowersName =
+            $scope.flowerNames[
+                $scope.selectedFlowers
+            ];
+
+    };
+
+
+    /* ================= ADD TO CART ================= */
+
+    $scope.addToCart = function () {
+
+
+        var cart = [];
+
+
+        /* GET OLD CART */
+
+        if (oldCart) {
+
+            try {
+
+                cart =
+                    JSON.parse(
+                        decodeURIComponent(oldCart)
+                    );
+
+
+                if (!Array.isArray(cart)) {
+
+                    cart = [];
+
+                }
+
+            }
+
+            catch (e) {
+
+                cart = [];
+
+            }
+
+        }
+
+
+        /* CREATE NEW ITEM */
+
+        var item = {
+
+            product:
+                $scope.selectedProductName,
+
+            color:
+                $scope.selectedColorName,
+
+            size:
+                $scope.selectedSizeName,
+
+            glitter:
+                $scope.selectedGlitterName,
+
+            flowers:
+                $scope.selectedFlowersName,
+
+            name:
+                $scope.customName,
+
+            price:
+                Number($scope.totalPrice)
+
+        };
+
+
+        /* ADD ONLY ONCE */
+
+        cart.push(item);
+
+
+        /* CONVERT CART TO URL */
+
+        var cartData =
+            encodeURIComponent(
+                JSON.stringify(cart)
+            );
+
+
+        /* OPEN CART */
+
+        window.location.href =
+            "cart.html?cart=" + cartData;
+
+    };
+
+
+    /* ================= FIRST CALCULATION ================= */
+
+    $scope.calculatePrice();
+
+
+});
+
+</script>
+
+
+</body>
+
+</html>
