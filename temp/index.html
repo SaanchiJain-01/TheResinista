@@ -1,1 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Resinista | Login</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(circle at 10% 20%, #ead7ff 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, #f6d9ff 0%, transparent 25%),
+                linear-gradient(135deg, #faf5ff, #eadcf8);
+
+            font-family: 'Poppins', sans-serif;
+
+            display: flex;
+            flex-direction: column;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ---------------- NAVBAR ---------------- */
+
+        .navbar {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+
+            padding: 15px 40px;
+
+            box-shadow: 0 3px 15px rgba(90,50,120,0.12);
+        }
+
+        .brand {
+            font-family: 'Dancing Script', cursive;
+            font-size: 34px;
+            font-weight: 700;
+            color: #713d91;
+        }
+
+        .brand span {
+            color: #b47ad1;
+        }
+
+
+        /* ---------------- MARQUEE ---------------- */
+
+        .marquee-box {
+            width: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #713d91,
+                #9b63b7,
+                #713d91
+            );
+
+            color: white;
+
+            padding: 8px 0;
+
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            box-shadow: 0 3px 10px rgba(90,50,120,0.2);
+        }
+
+        marquee {
+            padding: 2px;
+        }
+
+
+        /* ---------------- MAIN AREA ---------------- */
+
+        .main-container {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px 20px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1050px;
+
+            display: grid;
+            grid-template-columns: 1fr 430px;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+
+        /* ---------------- LEFT SIDE ---------------- */
+
+        .welcome-section {
+            padding: 20px;
+        }
+
+        .small-title {
+            color: #9b63b7;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+
+            font-size: 55px;
+            line-height: 1.1;
+
+            color: #4d2b60;
+
+            margin-bottom: 20px;
+        }
+
+        .welcome-title span {
+            color: #8d51aa;
+        }
+
+        .description {
+            color: #695b70;
+
+            font-size: 16px;
+            line-height: 1.8;
+
+            max-width: 520px;
+        }
+
+
+        /* ---------------- DECORATIVE RESIN CIRCLE ---------------- */
+
+        .resin-art {
+            width: 260px;
+            height: 260px;
+
+            margin-top: 35px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    #ffffff 0%,
+                    #e8caff 18%,
+                    #b77bd2 38%,
+                    #71408e 62%,
+                    #4c285d 100%
+                );
+
+            box-shadow:
+                0 20px 50px rgba(89,50,110,0.3),
+                inset 10px 10px 30px rgba(255,255,255,0.4);
+
+            position: relative;
+
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .resin-art::before {
+            content: "✦";
+
+            position: absolute;
+
+            top: 40px;
+            left: 65px;
+
+            font-size: 35px;
+
+            color: white;
+
+            opacity: 0.8;
+        }
+
+        .resin-art::after {
+            content: "✧";
+
+            position: absolute;
+
+            bottom: 45px;
+            right: 55px;
+
+            font-size: 40px;
+
+            color: #f9eaff;
+
+            opacity: 0.9;
+        }
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+
+        /* ---------------- LOGIN CARD ---------------- */
+
+        .login-card {
+
+            background: rgba(255,255,255,0.92);
+
+            padding: 38px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 45px rgba(80,40,100,0.18);
+
+            border: 1px solid rgba(180,130,210,0.25);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .login-heading {
+
+            text-align: center;
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 30px;
+
+            color: #542e68;
+
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+
+            text-align: center;
+
+            color: #88748f;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ---------------- INPUTS ---------------- */
+
+        .input-label {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #5f4868;
+
+            margin-bottom: 6px;
+
+            display: block;
+        }
+
+        .form-control {
+
+            border: 1px solid #dbc9e5;
+
+            border-radius: 12px;
+
+            padding: 12px 15px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+
+            border-color: #8d51aa;
+
+            box-shadow: 0 0 0 3px rgba(141,81,170,0.12);
+        }
+
+
+        /* ---------------- LOGIN BUTTON ---------------- */
+
+        .login-btn {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 25px;
+
+            padding: 13px;
+
+            margin-top: 8px;
+
+            background: linear-gradient(
+                90deg,
+                #713d91,
+                #a066bc
+            );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(113,61,145,0.3);
+        }
+
+
+        /* ---------------- DIVIDER ---------------- */
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin: 22px 0;
+
+            color: #aa99b0;
+
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #e5d9ea;
+        }
+
+
+        /* ---------------- SIGN UP ---------------- */
+
+        .signup-text {
+
+            text-align: center;
+
+            font-size: 13px;
+
+            color: #78677e;
+        }
+
+        .signup-link {
+
+            color: #7b4399;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+            cursor: pointer;
+        }
+
+        .signup-link:hover {
+
+            color: #4f2862;
+
+            text-decoration: underline;
+        }
+
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+
+            text-align: center;
+
+            padding: 15px;
+
+            color: #88748f;
+
+            font-size: 12px;
+
+            background: rgba(255,255,255,0.5);
+        }
+
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media(max-width: 850px) {
+
+            .content {
+
+                grid-template-columns: 1fr;
+
+                max-width: 500px;
+
+                gap: 20px;
+            }
+
+            .welcome-section {
+
+                text-align: center;
+            }
+
+            .welcome-title {
+
+                font-size: 42px;
+            }
+
+            .description {
+
+                margin: auto;
+            }
+
+            .resin-art {
+
+                margin: 30px auto;
+            }
+
+            .navbar {
+
+                padding: 12px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="container-fluid">
+
+        <div class="brand">
+            ✨ The <span>Resinista</span>
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MARQUEE ================= -->
+
+<div class="marquee-box">
+
+    <marquee scrollamount="6">
+
+        ✨ Welcome to The Resinista ✨
+        | Handcrafted With Love 💜
+        | Customized Resin Art 🌸
+        | Every Piece Tells a Story ✨
+        | Create • Customize • Cherish 💫
+        | New Designs Available Now 🛍️
+
+    </marquee>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main-container">
+
+    <div class="content">
+
+
+        <!-- LEFT CONTENT -->
+
+        <div class="welcome-section">
+
+            <div class="small-title">
+                Handmade • Personalized • Unique
+            </div>
+
+            <h1 class="welcome-title">
+
+                Where Resin
+                <br>
+
+                Meets <span>Art.</span>
+
+            </h1>
+
+            <p class="description">
+
+                Welcome to <b>The Resinista</b> — a world of
+                beautiful handcrafted resin creations made
+                specially for you.
+
+                <br><br>
+
+                ✨ Customize your favourite designs,
+                preserve your precious memories and
+                make every moment unforgettable.
+
+            </p>
+
+            <div class="resin-art"></div>
+
+        </div>
+
+
+        <!-- LOGIN CARD -->
+
+        <div class="login-card">
+
+            <h2 class="login-heading">
+                Welcome Back ✨
+            </h2>
+
+            <p class="login-subtitle">
+                Login to explore The Resinista
+            </p>
+
+
+            <!-- LOGIN FORM -->
+
+            <form action="/login" method="POST">
+
+                <label class="input-label">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label class="input-label mt-3">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="login-btn">
+
+                    🔐 Login to My Account
+
+                </button>
+
+            </form>
+
+
+            <div class="divider">
+                OR
+            </div>
+
+
+            <div class="signup-text">
+
+                New to The Resinista?
+
+                <br>
+
+                <a href="signup.html" class="signup-link">
+
+                    🌸 Create Your Account
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    ✨ The Resinista © 2026 |
+    Where Resin Meets Art, Every Piece Tells a Story 💜
+
+</footer>
+</body>
+</html>
