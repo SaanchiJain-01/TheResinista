@@ -92,29 +92,34 @@ def signup():
 
 
 # ---------------- LOGIN ----------------
-
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "GET":
+        return render_template(
+            "index.html",
+            cart=request.args.get("cart", "")
+        )
 
     email = request.form["email"]
     password = request.form["password"]
+    cart = request.form.get("cart", "")
 
     conn = get_db()
-
     customer = conn.execute(
         "SELECT * FROM customers WHERE email = ?",
         (email,)
     ).fetchone()
-
     conn.close()
 
     if customer and check_password_hash(
         customer["password"],
         password
     ):
-
         session["customer_id"] = customer["id"]
         session["customer_name"] = customer["name"]
+
+        if cart:
+            return redirect("/cart?cart=" + cart)
 
         return redirect("/home")
 
